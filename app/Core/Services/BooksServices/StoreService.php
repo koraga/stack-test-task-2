@@ -16,6 +16,9 @@ class StoreService
      */
     public static function store(array $array)
     {
+        if (!(isset($array['author']) && isset($array['name']) && isset($array['year']))) {
+            return false;
+        }
         return Book::create($array['author'], $array['name'], $array['year']);
     }
 }
