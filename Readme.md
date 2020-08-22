@@ -16,10 +16,10 @@ postman collection: postman.json
 
 start: docker-compose up
 
-routes:
-    'GET': 'api/books' Получить все записи
-    'POST': 'api/books' Добавить запись
-    'PATCH': 'api/books/$id' Изменить запись
-    'PUT': 'api/books/$id' Изменить запись
-    'DELETE': 'api/books/$id' Удалить запись
+routes:  
+'GET': 'api/books' Получить все записи.  
+'POST': 'api/books' Добавить запись.  
+'PATCH': 'api/books/$id' Изменить запись.  
+'PUT': 'api/books/$id' Изменить запись.  
+'DELETE': 'api/books/$id' Удалить запись.  
    
