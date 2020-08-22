@@ -5,3 +5,8 @@ RUN docker-php-ext-install -j$(nproc) bcmath calendar gd iconv json pcntl pdo pd
 
 # Install composer.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+COPY /composer.* /var/www/html
+WORKDIR /var/www/html
+RUN composer install --no-dev --prefer-dist --optimize-autoloader && composer clear-cache
+RUN composer dumpautoload
