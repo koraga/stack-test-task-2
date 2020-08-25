@@ -28,7 +28,7 @@ class ApiBooksController
     /**
      * Store a newly created resource in storage.
      *
-     * @return bool
+     * @return string
      */
     public function store()
     {
@@ -45,7 +45,7 @@ class ApiBooksController
      * Update the specified resource in storage.
      *
      * @param int $id
-     * @return bool
+     * @return string
      */
     public function update(int $id)
     {
@@ -61,7 +61,7 @@ class ApiBooksController
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return bool
+     * @return string
      */
     public function destroy(int $id)
     {
