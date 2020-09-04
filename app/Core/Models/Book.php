@@ -34,7 +34,15 @@ class Book
             $sql .= $key . '="' . $value . '" and ';
         }
 
-        return $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $db->prepare($sql);
+
+        foreach ($where as $key => $value) {
+            $stmt->bindParam(":$key", $where[$key]);
+        }
+
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
