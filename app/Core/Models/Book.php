@@ -37,7 +37,7 @@ class Book
         $stmt = $db->prepare($sql);
 
         foreach ($where as $key => $value) {
-            $stmt->bindParam(":$key", $where[$key]);
+            $stmt->bindValue(":$key", $where[$key]);
         }
 
         $stmt->execute();
