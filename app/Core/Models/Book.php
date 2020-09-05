@@ -27,17 +27,17 @@ class Book
             }
 
             if ($key === array_key_last($where)) {
-                $sql .= $key . '="' . $value . '"';
+                $sql .= $key . '=:' . $value;
                 break;
             }
 
-            $sql .= $key . '="' . $value . '" and ';
+            $sql .= $key . '=:' . $value . ' and ';
         }
 
         $stmt = $db->prepare($sql);
 
         foreach ($where as $key => $value) {
-            $stmt->bindValue(":$key", $where[$key]);
+            $stmt->bindParam(":$key", $where[$key]);
         }
 
         $stmt->execute();
@@ -110,8 +110,8 @@ class Book
     {
         $db = Db::getInstance()->getConnection();
         if( is_numeric( $id ) && $id > 0 ) {
-            $stmt = $db->prepare( "DELETE FROM books WHERE id =:id" );
-            $stmt->bindParam(':id', $id);
+            $stmt = $db->prepare( "DELETE FROM books WHERE id=:id" );
+            $stmt->bindValue(':id', $id);
             $stmt->execute();
             return $stmt->rowCount() > 0;
         }
